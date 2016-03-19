@@ -17,10 +17,9 @@ class Story {
    */
   protected $config;
 
-  public function __construct($config) {
-    $this->config = $config;
-    $this->storyModel = new StoryModel($config);
-    $this->commentModel = new Comment($config);
+  public function __construct(StoryModel $story, Comment $comment) {
+    $this->storyModel = $story;
+    $this->commentModel = $comment;
   }
 
   public function index() {
@@ -63,7 +62,7 @@ class Story {
         ';
     }
 
-    require_once $this->config['path'] . '/layout.phtml';
+    require '../layout.phtml';
 
   }
 
@@ -95,7 +94,7 @@ class Story {
           </form>
       ';
 
-      require_once $this->config['path'] . '/layout.phtml';
+      require '../layout.phtml';
   }
     
 }
